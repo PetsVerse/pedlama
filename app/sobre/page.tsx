@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import StormCarousel from '@/components/ui/StormCarousel';
 
 const PAGE_TITLE = "A Nossa História — Pé d'Lama";
 
@@ -220,14 +221,13 @@ export default function SobrePage() {
                           : 'mt-8 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:pr-8'
                       }
                     >
-                      <div className="aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">
-                        {/* Substituir por next/image: {moment.photoNote ?? 'foto do momento'} */}
-                        {moment.photoNote && (
-                          <span className="sr-only">
-                            Fotos da tempestade: {moment.photoNote}
-                          </span>
-                        )}
-                      </div>
+                      {moment.phase === 'Janeiro 2026' ? (
+                        <StormCarousel />
+                      ) : (
+                        <div className="aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">
+                          {/* Substituir por next/image: foto do momento */}
+                        </div>
+                      )}
                     </div>
                   </li>
                 );
