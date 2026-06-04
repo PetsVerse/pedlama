@@ -44,9 +44,9 @@ export default function StormCarousel() {
   }, [current, goTo]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div
-        className="relative aspect-[4/3] overflow-hidden rounded-lg bg-storm/15"
+        className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-storm/15"
         role="region"
         aria-roledescription="carrossel"
         aria-label="Fotos da tempestade de fevereiro de 2026 no Pé d'Lama"
@@ -55,18 +55,23 @@ export default function StormCarousel() {
           <div
             key={photo.src}
             className={`absolute inset-0 transition-opacity duration-300 ${
-              index === current ? 'opacity-100' : 'pointer-events-none opacity-0'
+              index === current
+                ? 'z-[1] opacity-100'
+                : 'z-0 pointer-events-none opacity-0'
             }`}
             aria-hidden={index !== current}
           >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-              priority={index === 0}
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                priority={index === 0}
+                unoptimized
+              />
+            </div>
           </div>
         ))}
 
@@ -89,7 +94,7 @@ export default function StormCarousel() {
         </button>
 
         <span
-          className="absolute bottom-3 right-3 z-20 rounded-md bg-forest px-3 py-1 text-xs font-bold text-cream"
+          className="absolute bottom-3 right-3 z-10 rounded-md bg-forest px-3 py-1 text-xs font-bold text-cream"
           aria-hidden="true"
         >
           Fevereiro 2026

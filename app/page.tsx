@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import StormCarousel from '@/components/ui/StormCarousel';
 
 const PAGE_TITLE =
   "Pé d'Lama — Espaço de Festas Infantis e Eventos em Portugal";
@@ -172,15 +173,7 @@ export default function HomePage() {
       <section className="bg-cream py-section lg:py-section-lg">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">
-              {/* Substituir por next/image: foto da tempestade / recuperação */}
-              <span
-                className="absolute bottom-3 right-3 rounded-md bg-forest px-3 py-1 text-xs font-bold text-cream"
-                aria-hidden="true"
-              >
-                Fevereiro 2026
-              </span>
-            </div>
+            <StormCarousel />
 
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-terracotta">

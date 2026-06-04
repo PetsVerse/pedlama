@@ -109,7 +109,8 @@ export default function ContactoPage() {
           </p>
         </header>
 
-        <section className="grid gap-8 pb-section md:grid-cols-2 lg:gap-10 lg:pb-section-lg">
+        <section className="pb-section lg:pb-section-lg">
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
           <div className="rounded-lg border border-forest/10 bg-cream p-8">
             <h2 className="font-display text-2xl text-forest">
               Contactos directos
@@ -151,8 +152,7 @@ export default function ContactoPage() {
                   Localização
                 </dt>
                 <dd className="mt-2 text-base text-storm">
-                  {/* Substituir pela morada real */}
-                  Portugal
+                  N356-1 n.º 11, 2405-003 Maceira
                 </dd>
               </div>
 
@@ -184,6 +184,28 @@ export default function ContactoPage() {
             >
               Formulário de Reserva →
             </Link>
+          </div>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-4xl">
+            <div className="relative w-full overflow-hidden rounded-sm border border-forest/10">
+              <iframe
+                src="https://maps.google.com/maps?q=N356-1+n.º+11,+2405-003+Maceira,+Portugal&output=embed"
+                title="Localização do Pé d'Lama no Google Maps"
+                loading="lazy"
+                className="h-[300px] w-full border-0 rounded-sm md:h-[400px]"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=N356-1+11,+2405-003+Maceira,+Portugal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-body text-sm font-bold uppercase tracking-widest text-terracotta transition-colors hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+            >
+              Abrir no Google Maps →
+            </a>
           </div>
         </section>
       </div>
