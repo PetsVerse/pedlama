@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-forest: #2d5016;
+  --color-forest-light: #3d6b1e;
+  --color-forest-dark: #1e360f;
+  --color-terracotta: #c4622d;
+  --color-terracotta-light: #d4763f;
+  --color-terracotta-dark: #a5511f;
+  --color-cream: #f5f0e8;
+  --color-offwhite: #fafaf7;
+  --color-bark: #7a5c3a;
+  --color-bark-light: #9b7b56;
+  --color-storm: #4a5568;
+  --color-storm-light: #718096;
+}
+
+@layer base {
+  body {
+    @apply font-body bg-offwhite text-storm antialiased;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+
+  .underline-terracotta {
+    position: relative;
+    display: inline-block;
+  }
+
+  .underline-terracotta::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-terracotta);
+    border-radius: 1px;
+  }
+
+  .legal-prose {
+    @apply text-storm leading-relaxed;
+  }
+
+  .legal-prose > p + p,
+  .legal-prose > h2 + p,
+  .legal-prose > ul {
+    @apply mt-4;
+  }
+
+  .legal-prose > h2 {
+    @apply mt-10 font-display text-xl text-forest first:mt-0;
+  }
+
+  .legal-prose ul {
+    @apply list-disc space-y-2 pl-6;
+  }
+
+  .legal-prose a {
+    @apply font-medium text-terracotta underline decoration-terracotta/40 underline-offset-4 hover:text-terracotta-dark;
+  }
+}

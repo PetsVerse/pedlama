@@ -1,0 +1,368 @@
+# ============================================
+# PÉ D'LAMA — CURSOR RULES
+# Espaço de festas e eventos em Portugal
+# Next.js App Router + Tailwind CSS + TypeScript
+# Domínio: pedlama.pt
+# ============================================
+
+## PROJECT CONTEXT
+- Site: PEDLAMA.PT
+- Nome oficial: Pé d'Lama
+- Proprietário: Virgílio Morouço
+- Propósito: Espaço de festas infantis e eventos de adultos em Portugal
+- Narrativa central: Resiliência — o espaço sofreu uma tempestade severa em 2026
+  e reabriu mais forte. Esta história deve estar presente em todo o site.
+- Stack: Next.js 14 (App Router), Tailwind CSS, TypeScript
+- Hosting: Vercel
+- Domínio primário: https://www.pedlama.pt (canonical sempre com www)
+- Idioma principal: Português (pt)
+- E-E-A-T: história real, proprietário identificado, autenticidade é o ativo principal
+
+## IDENTIDADE VISUAL
+- Paleta: verde floresta (#2D5016), terracota (#C4622D), creme (#F5F0E8), branco sujo (#FAFAF7)
+- Tipografia display: 'Playfair Display' (Google Fonts) — headings principais
+- Tipografia body: 'Lato' (Google Fonts) — corpo de texto
+- Tom: caloroso, familiar, autêntico, resiliente — nunca corporativo, nunca genérico
+- Estética: rústico-elegante, natureza, outdoor, festa com alma
+
+## ============================================
+## SELF-AUDIT — MANDATORY APÓS CADA OUTPUT
+## ============================================
+
+Após gerar ou editar QUALQUER ficheiro, executar
+este checklist antes de apresentar o resultado.
+Nunca saltar este passo.
+
+### PARA CADA PÁGINA CRIADA OU EDITADA:
+
+HEAD / METADATA (via generateMetadata):
+□ Title único e não vazio (máx 60 chars)?
+□ Meta description presente (150-160 chars exactos)?
+  (contar caracteres e indicar a contagem)
+□ robots: index, follow presente?
+□ Canonical URL correcta com trailing slash?
+□ Canonical usa https://www.pedlama.pt?
+□ hreflang para pt (e en se aplicável)?
+□ og:title presente?
+□ og:description presente?
+□ og:url presente?
+□ og:image presente (1200x630)?
+□ og:type presente?
+□ og:site_name = "Pé d'Lama"?
+□ twitter:card presente?
+□ JSON-LD schema presente e válido?
+□ Schema type corresponde ao tipo de página?
+□ Google Analytics placeholder presente?
+
+COMPONENTE / PÁGINA:
+□ Exactamente UM <h1> por página?
+□ <h1> contém keyword alvo?
+□ Hierarquia de headings lógica (h1→h2→h3)?
+□ <header> presente no layout?
+□ <main> presente em cada página?
+□ <footer> presente no layout?
+□ Breadcrumb em páginas interiores?
+□ Todos os <img>/next/image têm alt?
+□ Imagens com width + height?
+□ Elementos interactivos acessíveis por teclado?
+□ Footer: Sobre, Contacto, Privacidade, Termos?
+
+### FORMATO DO RELATÓRIO DE SELF-AUDIT:
+---
+SELF-AUDIT COMPLETO
+Ficheiro: [nome]
+Verificações relevantes: [número]
+✅ Passou: [número]
+❌ Falhou: [lista]
+Contagem de caracteres da meta description: [número exacto]
+Schema confirmado: [tipo]
+---
+
+Se alguma verificação falhar, corrigir imediatamente
+antes de apresentar o output.
+
+## ============================================
+## STACK — NÃO NEGOCIÁVEL
+## ============================================
+
+### Next.js
+- App Router apenas — nunca Pages Router
+- generateMetadata() para todo o SEO — nunca next/head
+- generateStaticParams() para páginas estáticas
+- Server Components por defeito — 'use client' só quando necessário
+- Nunca fazer fetch de dados client-side se puder ser server-side
+- next/image para TODAS as imagens — nunca <img>
+- next/link para TODA a navegação interna — nunca <a href>
+- loading.tsx em cada segmento de rota dinâmico
+- error.tsx em cada segmento de rota dinâmico
+
+### TypeScript
+- Strict mode no tsconfig.json
+- Sem uso de `any` — nunca
+- Interfaces para todos os tipos de dados
+- Todos os props tipados
+
+### Tailwind CSS
+- Tailwind apenas — sem CSS custom excepto globals.css para variáveis CSS
+- Mobile-first sempre
+- Todos os elementos interactivos min-height 44px
+- Focus states definidos para todos os elementos interactivos
+
+### Variáveis de Ambiente
+- NEXT_PUBLIC_ apenas para variáveis expostas ao browser
+- Nunca commitar .env.local
+- Documentar vars em .env.example
+- Vars necessárias:
+  NEXT_PUBLIC_GA_MEASUREMENT_ID
+  NEXT_PUBLIC_SITE_URL=https://www.pedlama.pt
+
+## ============================================
+## SEO TÉCNICO — OBRIGATÓRIO EM CADA PÁGINA
+## ============================================
+
+### generateMetadata() — obrigatório em cada página
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: '[Título da Página] | Pé d\'Lama',      // máx 60 chars
+    description: '[Descrição única]',               // 150-160 chars exactos
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: 'https://www.pedlama.pt/[path]/',
+    },
+    openGraph: {
+      title: '[OG Title]',
+      description: '[OG Description]',
+      url: 'https://www.pedlama.pt/[path]/',
+      siteName: 'Pé d\'Lama',
+      locale: 'pt_PT',
+      type: 'website',
+      images: [{ url: '[og-image]', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  }
+}
+
+### JSON-LD Schema — obrigatório em cada página
+
+HOMEPAGE + SOBRE:
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EventVenue",
+      "name": "Pé d'Lama",
+      "url": "https://www.pedlama.pt",
+      "description": "Espaço de festas infantis e eventos em Portugal",
+      "address": { "@type": "PostalAddress", "addressCountry": "PT" },
+      "founder": { "@type": "Person", "name": "Virgílio Morouço" }
+    },
+    {
+      "@type": "Organization",
+      "name": "Pé d'Lama",
+      "url": "https://www.pedlama.pt"
+    }
+  ]
+}
+
+PÁGINAS DE PACOTES:
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "[Nome do Pacote]",
+  "provider": { "@type": "Organization", "name": "Pé d'Lama" },
+  "description": "[Descrição]",
+  "areaServed": { "@type": "Country", "name": "Portugal" }
+}
+
+BREADCRUMB (em todas as páginas interiores):
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.pedlama.pt/" },
+    { "@type": "ListItem", "position": 2, "name": "[Página]" }
+  ]
+}
+
+## ============================================
+## ESTRUTURA DE URLs — PERMANENTE, NUNCA ALTERAR
+## ============================================
+
+pedlama.pt/               → redirect para www.pedlama.pt/
+www.pedlama.pt/           → Homepage
+www.pedlama.pt/sobre/     → Sobre / A nossa história (inclui narrativa da tempestade)
+www.pedlama.pt/galeria/   → Galeria de fotos
+www.pedlama.pt/pacotes/   → Pacotes de festas e eventos
+www.pedlama.pt/reservas/  → Reservas / Pedido de orçamento
+www.pedlama.pt/contacto/  → Contacto
+www.pedlama.pt/privacidade/ → Política de Privacidade
+www.pedlama.pt/termos/    → Termos e Condições
+
+Regras de URL:
+- Hífens apenas, nunca underscores
+- Sempre minúsculas
+- Sempre trailing slash
+- NUNCA alterar uma URL após publicação
+
+## ============================================
+## ARQUITECTURA DE COMPONENTES
+## ============================================
+
+/app
+  layout.tsx                ← root layout (header, footer, fonts, GA)
+  page.tsx                  ← homepage
+  /sobre
+    page.tsx                ← história + narrativa da tempestade
+  /galeria
+    page.tsx                ← galeria de fotos
+  /pacotes
+    page.tsx                ← listagem de pacotes
+    /[slug]
+      page.tsx              ← detalhe de pacote
+  /reservas
+    page.tsx                ← formulário de pedido de reserva
+  /contacto
+    page.tsx                ← contacto
+  /privacidade
+    page.tsx
+  /termos
+    page.tsx
+
+/components
+  /ui
+    Button.tsx
+    Badge.tsx
+    SectionTitle.tsx
+  /layout
+    Header.tsx              ← nav com logo Pé d'Lama
+    Footer.tsx
+    Navigation.tsx
+  /sections
+    Hero.tsx                ← hero da homepage com narrativa de reabertura
+    StormStory.tsx          ← secção "a nossa história" com before/after
+    PackageCard.tsx         ← card de pacote de festa
+    GalleryGrid.tsx         ← grid de galeria
+    TestimonialsSection.tsx
+    ReservationForm.tsx
+    ContactSection.tsx
+    CTABanner.tsx
+
+/lib
+  utils.ts
+  schemas.ts               ← geradores de JSON-LD
+
+/messages
+  pt.json                  ← todas as strings de UI em português
+
+/public
+  /images                  ← imagens optimizadas
+  og-image.jpg             ← 1200x630 para Open Graph
+
+## ============================================
+## NARRATIVA DA TEMPESTADE — DIRECTRIZES
+## ============================================
+
+A história do Pé d'Lama é o seu maior activo de diferenciação.
+Deve aparecer de forma autêntica, nunca melodramática.
+
+- Homepage: secção "De pé outra vez" — breve referência à tempestade
+  e à reabertura, com CTA para a página /sobre/
+- Página /sobre/: história completa com photos do antes (tempestade)
+  e do depois (espaço recuperado)
+- Tone of voice: orgulho tranquilo, não vitimismo. "Levámos um tombo
+  e levantámo-nos. É o que fazemos."
+- Proprietário: Virgílio Morouço — nome sempre presente na narrativa
+- Nunca exagerar os danos para efeito dramático — as fotos falam por si
+
+## ============================================
+## COPY GUIDELINES — TOM DE VOZ
+## ============================================
+
+- Português de Portugal (não BR): "animação" não "animação infantil",
+  "festa" não "festinha", "espaço" não "local"
+- Tutear nas CTAs: "Reserva aqui", "Descobre os pacotes"
+- Headings com força: nunca genéricos ("O nosso espaço"),
+  sempre específicos ("Um lugar que a tempestade não conseguiu apagar")
+- Meta descriptions: incluir sempre localização (Portugal) e proposta de valor
+- Não usar superlativos sem prova: não "o melhor espaço de festas"
+
+## ============================================
+## FORMULÁRIO DE RESERVAS
+## ============================================
+
+Campos obrigatórios:
+- Nome completo
+- Email
+- Telefone
+- Tipo de evento (festa infantil / evento adultos / outro)
+- Data pretendida
+- Número estimado de convidados
+- Mensagem / pedido especial
+
+Envio: via API route /api/reservas (POST)
+Fallback: mailto: link se API falhar
+Validação: client-side + server-side
+Nunca armazenar dados sem política de privacidade clara
+
+## ============================================
+## GALERIA
+## ============================================
+
+- Imagens do espaço: antes da tempestade (arquivo), durante recuperação,
+  e estado actual (após reabertura)
+- Categorias: "O Espaço", "Festas Infantis", "Eventos", "A Nossa História"
+- Usar next/image com layout="fill" em grids
+- Sempre alt text descritivo: "Festa de aniversário infantil no Pé d'Lama"
+- Lightbox via dynamic import (sem bloquear render)
+
+## ============================================
+## PERFORMANCE
+## ============================================
+
+- next/image para TODAS as imagens
+- Dynamic imports para componentes pesados (Galeria, Mapa)
+- Lighthouse mobile: alvo 90+
+- CLS: 0 em hero (definir dimensões explícitas)
+- Sem autoplay em vídeos
+
+## ============================================
+## GOOGLE ANALYTICS
+## ============================================
+
+- next/third-parties para GA4
+- Track: page views, clique em CTAs de reserva,
+  visualizações de pacotes, envio de formulário
+
+## ============================================
+## ADSENSE / MONETIZAÇÃO
+## ============================================
+
+- Privacy Policy linkada no footer (obrigatório para AdSense)
+- Posições de anúncio marcadas com:
+  {/* ADSENSE SLOT: [nome-da-posição] */}
+- Sem pop-ups a bloquear conteúdo
+- Sem autoplay
+
+## ============================================
+## NUNCA FAZER
+## ============================================
+
+- Nunca usar Pages Router
+- Nunca usar <img> — sempre next/image
+- Nunca usar <a href> para links internos — sempre next/link
+- Nunca duplicar <title> entre páginas
+- Nunca usar a mesma meta description em duas páginas
+- Nunca usar o mesmo <h1> em duas páginas
+- Nunca publicar página sem schema markup
+- Nunca alterar uma URL após publicação
+- Nunca usar underscores em URLs
+- Nunca saltar níveis de heading (h1→h3)
+- Nunca usar tipo `any` em TypeScript
+- Nunca ignorar estados de erro
+- Nunca usar canonical com http:// — sempre https://
+- Nunca usar canonical sem www (o canonical é sempre www.pedlama.pt)
+- Nunca inventar depoimentos ou avaliações
+- Nunca exagerar a narrativa da tempestade de forma sensacionalista
