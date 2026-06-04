@@ -139,7 +139,7 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/75 md:text-xl">
-            Quando a tempestade de janeiro de 2026 devastou o Pé d&apos;Lama,
+            Quando a tempestade de fevereiro de 2026 devastou o Pé d&apos;Lama,
             o Virgílio Morouço não desistiu. Hoje o espaço está de volta — mais
             forte, mais bonito, pronto para receber as vossas festas.
           </p>
@@ -178,7 +178,7 @@ export default function HomePage() {
                 className="absolute bottom-3 right-3 rounded-md bg-forest px-3 py-1 text-xs font-bold text-cream"
                 aria-hidden="true"
               >
-                Janeiro 2026
+                Fevereiro 2026
               </span>
             </div>
 
@@ -191,7 +191,7 @@ export default function HomePage() {
                 <span className="italic">Levantámo-nos.</span>
               </h2>
               <p className="mt-6 leading-relaxed text-storm">
-                No início de 2026, uma tempestade severa arrasou o que tínhamos
+                Em fevereiro de 2026, uma tempestade severa arrasou o que tínhamos
                 construído com as nossas mãos — estruturas, árvores, memórias
                 de anos de festas. Por momentos, parecia que tudo tinha acabado.
               </p>

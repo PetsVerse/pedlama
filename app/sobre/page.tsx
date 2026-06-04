@@ -93,14 +93,14 @@ const timeline: TimelineMoment[] = [
     body: 'O Virgílio Morouço criou o Pé d\'Lama tijolo a tijolo, com paciência e capricho. Um espaço verde, cheio de vida, que se foi tornando no lugar favorito das famílias da região para celebrar — aniversários, piqueniques, tardes que ficam na memória.',
   },
   {
-    phase: 'Janeiro 2026',
+    phase: 'Fevereiro 2026',
     title: 'A tempestade',
     phaseColor: 'storm',
     photoNote: 'pedlama1.jpg a pedlama5.jpg',
     body: 'Uma tempestade severa atingiu o espaço com uma violência que ninguém esperava. Árvores centenárias arrancadas pela raiz. Estruturas danificadas. Em poucas horas, o Pé d\'Lama ficou irreconhecível — um silêncio onde antes havia risos.',
   },
   {
-    phase: 'Fevereiro – Maio 2026',
+    phase: 'Março – Maio 2026',
     title: 'A reconstrução',
     phaseColor: 'terracotta',
     body: 'Dia após dia, ramo a ramo, pedra a pedra. Com a ajuda da família e de quem nunca deixou de acreditar no espaço, o trabalho avançou sem fanfarra — apenas com a teimosia de quem sabe o que vale a pena guardar.',
@@ -221,7 +221,7 @@ export default function SobrePage() {
                           : 'mt-8 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:pr-8'
                       }
                     >
-                      {moment.phase === 'Janeiro 2026' ? (
+                      {moment.phase === 'Fevereiro 2026' ? (
                         <StormCarousel />
                       ) : (
                         <div className="aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">

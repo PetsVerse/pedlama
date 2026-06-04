@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 const STORM_PHOTOS = [
   {
     src: '/images/pedlama1.jpg',
-    alt: 'Árvores derrubadas no espaço Pé d\'Lama pela tempestade de janeiro de 2026',
+    alt: 'Árvores derrubadas no espaço Pé d\'Lama pela tempestade de fevereiro de 2026',
   },
   {
     src: '/images/pedlama2.jpg',
@@ -49,7 +49,7 @@ export default function StormCarousel() {
         className="relative aspect-[4/3] overflow-hidden rounded-lg bg-storm/15"
         role="region"
         aria-roledescription="carrossel"
-        aria-label="Fotos da tempestade de janeiro de 2026 no Pé d'Lama"
+        aria-label="Fotos da tempestade de fevereiro de 2026 no Pé d'Lama"
       >
         {STORM_PHOTOS.map((photo, index) => (
           <div
@@ -92,7 +92,7 @@ export default function StormCarousel() {
           className="absolute bottom-3 right-3 z-20 rounded-md bg-forest px-3 py-1 text-xs font-bold text-cream"
           aria-hidden="true"
         >
-          Janeiro 2026
+          Fevereiro 2026
         </span>
       </div>
 
