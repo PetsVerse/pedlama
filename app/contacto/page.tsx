@@ -9,8 +9,9 @@ const PAGE_DESCRIPTION =
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-contacto.jpg';
 
 // Substituir pelos contactos reais quando confirmados
-const CONTACT_EMAIL = 'geral@pedlama.pt';
-const CONTACT_PHONE = '+351XXXXXXXXX';
+const CONTACT_EMAIL = 'pedlama.maceira@gmail.com';
+const CONTACT_PHONE = '+351 915 716 693';
+const CONTACT_PHONE_HREF = '+351915716693';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -122,7 +123,6 @@ export default function ContactoPage() {
                   Email
                 </dt>
                 <dd className="mt-2">
-                  {/* Substituir pelo email real */}
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
                     className="inline-flex min-h-[44px] items-center text-base font-medium text-forest underline decoration-terracotta/40 underline-offset-4 transition-colors hover:text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
@@ -137,9 +137,8 @@ export default function ContactoPage() {
                   Telefone / WhatsApp
                 </dt>
                 <dd className="mt-2">
-                  {/* Substituir pelo número real do Virgílio */}
                   <a
-                    href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}
+                    href={`tel:${CONTACT_PHONE_HREF}`}
                     className="inline-flex min-h-[44px] items-center text-base font-medium text-forest underline decoration-terracotta/40 underline-offset-4 transition-colors hover:text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
                   >
                     {CONTACT_PHONE}

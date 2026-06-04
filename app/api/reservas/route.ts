@@ -89,7 +89,7 @@ export async function POST(request: Request) {
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
     //   from: 'Pé d\'Lama <reservas@pedlama.pt>',
-    //   to: process.env.EMAIL_TO ?? 'geral@pedlama.pt',
+    //   to: process.env.EMAIL_TO ?? 'pedlama.maceira@gmail.com',
     //   subject: `Nova reserva — ${payload.nome}`,
     //   html: `
     //     <h2>Novo pedido de reserva</h2>

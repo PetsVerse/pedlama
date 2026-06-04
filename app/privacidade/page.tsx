@@ -3,8 +3,7 @@ import Link from 'next/link';
 
 const PAGE_TITLE = "Política de Privacidade — Pé d'Lama";
 
-// Substituir pelo email real quando confirmado
-const CONTACT_EMAIL = 'geral@pedlama.pt';
+const CONTACT_EMAIL = 'pedlama.maceira@gmail.com';
 
 const LAST_UPDATED = '4 de junho de 2026';
 
@@ -113,7 +112,6 @@ export default function PrivacidadePage() {
           <p>
             Para questões sobre privacidade ou tratamento de dados, envia email
             para:{' '}
-            {/* Substituir pelo email real */}
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </article>

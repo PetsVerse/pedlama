@@ -29,7 +29,7 @@ const INITIAL_FORM: FormData = {
 const inputClass =
   'w-full min-h-[44px] rounded-sm border border-forest/20 bg-offwhite px-4 py-2 text-storm transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest/30';
 
-const FALLBACK_EMAIL = 'geral@pedlama.pt';
+const FALLBACK_EMAIL = 'pedlama.maceira@gmail.com';
 
 export default function ReservationForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
@@ -289,7 +289,6 @@ export default function ReservationForm() {
 
       <p className="mt-8 text-center text-sm text-storm">
         Preferes email?{' '}
-        {/* Substituir pelo email real de contacto quando confirmado */}
         <a
           href={`mailto:${FALLBACK_EMAIL}`}
           className="font-medium text-terracotta underline hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
