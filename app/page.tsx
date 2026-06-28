@@ -166,10 +166,10 @@ export default function HomePage() {
 
             <div className="relative hidden justify-center lg:flex">
               <Image
-                src="/images/pezinho2.png"
+                src="/images/pezinho3.png"
                 alt="Pezinho, mascote do Pé d'Lama"
                 width={1000}
-                height={1512}
+                height={1487}
                 className="h-auto w-full max-h-[min(70vh,640px)] object-contain object-bottom"
                 priority
               />
