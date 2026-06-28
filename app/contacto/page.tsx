@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { RESERVATIONS_LIVE } from '@/lib/site-config';
 
 const PAGE_TITLE = "Contacto — Pé d'Lama";
 
@@ -171,18 +172,21 @@ export default function ContactoPage() {
 
           <div className="flex flex-col justify-center rounded-lg bg-forest p-8">
             <h2 className="font-display text-2xl text-cream">
-              Pronto para reservar?
+              {RESERVATIONS_LIVE ? 'Pronto para reservar?' : 'Reservas brevemente'}
             </h2>
             <p className="mt-4 leading-relaxed text-cream/70">
-              Se já sabes a data e o tipo de evento, o formulário de reservas é
-              o caminho mais rápido — recebes orçamento sem compromisso.
+              {RESERVATIONS_LIVE
+                ? 'Se já sabes a data e o tipo de evento, o formulário de reservas é o caminho mais rápido — recebes orçamento sem compromisso.'
+                : 'Estamos a preparar o formulário online. Entretanto, usa os contactos ao lado — respondemos em menos de 24 horas.'}
             </p>
-            <Link
-              href="/reservas/"
-              className="mt-8 inline-flex min-h-[44px] w-fit items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
-            >
-              Formulário de Reserva →
-            </Link>
+            {RESERVATIONS_LIVE ? (
+              <Link
+                href="/reservas/"
+                className="mt-8 inline-flex min-h-[44px] w-fit items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+              >
+                Formulário de Reserva →
+              </Link>
+            ) : null}
           </div>
           </div>
 

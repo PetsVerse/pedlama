@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import StormCarousel from '@/components/ui/StormCarousel';
+import { prelaunchHidden, RESERVATIONS_LIVE } from '@/lib/site-config';
 
 const PAGE_TITLE = "A Nossa História — Pé d'Lama";
 
@@ -265,7 +266,9 @@ export default function SobrePage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/pacotes/"
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto"
+              className={`${prelaunchHidden} inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto`}
+              aria-hidden={!RESERVATIONS_LIVE}
+              tabIndex={RESERVATIONS_LIVE ? undefined : -1}
             >
               Ver Pacotes
             </Link>
