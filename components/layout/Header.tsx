@@ -3,6 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useId, useState } from 'react';
+import {
+  prelaunchHidden,
+  prelaunchNavHidden,
+  RESERVATIONS_LIVE,
+} from '@/lib/site-config';
 
 const navLinks = [
   { href: '/sobre/', label: 'A Nossa História' },
@@ -59,14 +64,20 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="inline-flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-storm transition-colors hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+              className={`${prelaunchNavHidden(link.href)} inline-flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-storm transition-colors hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta`}
+              aria-hidden={!RESERVATIONS_LIVE && link.href === '/pacotes/'}
+              tabIndex={
+                !RESERVATIONS_LIVE && link.href === '/pacotes/' ? -1 : undefined
+              }
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/reservas/"
-            className="ml-2 inline-flex min-h-[44px] items-center rounded-md bg-terracotta px-5 text-sm font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            className={`${prelaunchHidden} ml-2 inline-flex min-h-[44px] items-center rounded-md bg-terracotta px-5 text-sm font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest`}
+            aria-hidden={!RESERVATIONS_LIVE}
+            tabIndex={RESERVATIONS_LIVE ? undefined : -1}
           >
             Reservar
           </Link>
@@ -111,21 +122,29 @@ export default function Header() {
       >
         <ul className="mx-auto flex max-w-7xl flex-col px-4 py-3 md:px-6">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li
+              key={link.href}
+              className={prelaunchNavHidden(link.href)}
+              aria-hidden={!RESERVATIONS_LIVE && link.href === '/pacotes/'}
+            >
               <Link
                 href={link.href}
                 className="flex min-h-[44px] items-center border-b border-forest/5 text-base font-medium text-storm transition-colors hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
                 onClick={closeMenu}
+                tabIndex={
+                  !RESERVATIONS_LIVE && link.href === '/pacotes/' ? -1 : undefined
+                }
               >
                 {link.label}
               </Link>
             </li>
           ))}
-          <li className="pt-2">
+          <li className={`pt-2 ${prelaunchHidden}`} aria-hidden={!RESERVATIONS_LIVE}>
             <Link
               href="/reservas/"
               className="flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-5 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
               onClick={closeMenu}
+              tabIndex={RESERVATIONS_LIVE ? undefined : -1}
             >
               Reservar
             </Link>

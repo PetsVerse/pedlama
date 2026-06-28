@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import StormCarousel from '@/components/ui/StormCarousel';
+import { prelaunchHidden, RESERVATIONS_LIVE } from '@/lib/site-config';
 
 const PAGE_TITLE =
   "Pé d'Lama — Espaço de Festas Infantis e Eventos em Portugal";
@@ -151,7 +152,9 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/reservas/"
-                  className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                  className={`${prelaunchHidden} inline-flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream`}
+                  aria-hidden={!RESERVATIONS_LIVE}
+                  tabIndex={RESERVATIONS_LIVE ? undefined : -1}
                 >
                   Reservar a Minha Festa
                 </Link>
@@ -218,7 +221,10 @@ export default function HomePage() {
       {/* ADSENSE SLOT: header-banner */}
 
       {/* ——— PACOTES ——— */}
-      <section className="bg-offwhite py-section lg:py-section-lg">
+      <section
+        className={`${prelaunchHidden} bg-offwhite py-section lg:py-section-lg`}
+        aria-hidden={!RESERVATIONS_LIVE}
+      >
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <h2 className="text-center font-display text-display-lg text-forest">
             Festas que ficam na memória
@@ -315,7 +321,9 @@ export default function HomePage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/reservas/"
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-cream px-8 text-base font-bold text-terracotta-dark transition-colors hover:bg-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto"
+              className={`${prelaunchHidden} inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-cream px-8 text-base font-bold text-terracotta-dark transition-colors hover:bg-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto`}
+              aria-hidden={!RESERVATIONS_LIVE}
+              tabIndex={RESERVATIONS_LIVE ? undefined : -1}
             >
               Reservar Agora
             </Link>

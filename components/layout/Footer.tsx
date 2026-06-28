@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import {
+  prelaunchNavHidden,
+  RESERVATIONS_LIVE,
+} from '@/lib/site-config';
 
 const navLinks = [
   { href: '/sobre/', label: 'A Nossa História' },
@@ -15,7 +19,7 @@ const legalLinks = [
 
 const socialLinks = [
   {
-    href: '#',
+    href: 'https://www.facebook.com/profile.php?id=61591089437946',
     label: 'Facebook',
     icon: (
       <svg
@@ -87,10 +91,23 @@ export default function Footer() {
             </h2>
             <ul className="mt-4 space-y-1">
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li
+                  key={link.href}
+                  className={prelaunchNavHidden(link.href)}
+                  aria-hidden={
+                    !RESERVATIONS_LIVE &&
+                    (link.href === '/pacotes/' || link.href === '/reservas/')
+                  }
+                >
                   <Link
                     href={link.href}
                     className="inline-flex min-h-[44px] items-center text-sm text-cream/80 transition-colors hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                    tabIndex={
+                      !RESERVATIONS_LIVE &&
+                      (link.href === '/pacotes/' || link.href === '/reservas/')
+                        ? -1
+                        : undefined
+                    }
                   >
                     {link.label}
                   </Link>
