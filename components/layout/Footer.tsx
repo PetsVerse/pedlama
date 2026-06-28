@@ -34,7 +34,7 @@ const socialLinks = [
     ),
   },
   {
-    href: '#',
+    href: 'https://www.instagram.com/pedlama.maceira/',
     label: 'Instagram',
     icon: (
       <svg

@@ -314,7 +314,7 @@ export default function HomePage() {
             Pronto para celebrar <span className="italic">connosco</span>?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-cream/90">
-            A nossa agenda para 2026 está a abrir. Seja uma festa de anos para
+            A nossa agenda para 2026 vai abrir brevemente. Seja uma festa de anos para
             o mais pequeno ou uma comemoração entre amigos — há um lugar à
             vossa espera, de pé outra vez.
           </p>
