@@ -24,6 +24,14 @@ const STORM_PHOTOS = [
     src: '/images/pedlama5.jpg',
     alt: 'Vista geral dos estragos da tempestade no Pé d\'Lama',
   },
+  {
+    src: '/images/pedlama6.jpg',
+    alt: 'Telhado danificado e chapas arrancadas pela tempestade no Pé d\'Lama',
+  },
+  {
+    src: '/images/pedlama7.jpg',
+    alt: 'Árvores e galhos caídos junto ao edifício do Pé d\'Lama após a tempestade',
+  },
 ] as const;
 
 const TOTAL = STORM_PHOTOS.length;
