@@ -43,9 +43,9 @@ export default function Header() {
           <Image
             src="/images/logo.png"
             alt=""
-            width={44}
-            height={44}
-            className="h-9 w-9 shrink-0 object-contain md:h-11 md:w-11"
+            width={88}
+            height={88}
+            className="h-[72px] w-[72px] shrink-0 object-contain md:h-[88px] md:w-[88px]"
             priority
           />
           Pé d&apos;Lama
