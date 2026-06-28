@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useId, useState } from 'react';
 
@@ -37,8 +38,16 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-20 md:px-6 lg:px-8">
         <Link
           href="/"
-          className="font-display text-xl text-forest transition-colors duration-200 hover:text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta md:text-2xl min-h-[44px] inline-flex items-center"
+          className="inline-flex min-h-[44px] items-center gap-2.5 font-display text-xl text-forest transition-colors duration-200 hover:text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta md:gap-3 md:text-2xl"
         >
+          <Image
+            src="/images/logo.png"
+            alt=""
+            width={44}
+            height={44}
+            className="h-9 w-9 shrink-0 object-contain md:h-11 md:w-11"
+            priority
+          />
           Pé d&apos;Lama
         </Link>
 

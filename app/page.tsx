@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import StormCarousel from '@/components/ui/StormCarousel';
 
@@ -129,35 +130,50 @@ export default function HomePage() {
         </div>
         <div className="absolute inset-0 bg-forest-dark/60" aria-hidden="true" />
 
-        <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-16 pt-16 md:px-6 md:pt-20 lg:px-8">
-          <span className="mb-6 inline-flex w-fit items-center rounded-full border border-terracotta/40 bg-terracotta/20 px-4 py-1.5 text-sm font-medium text-terracotta-light">
-            ✦ Reaberto em 2026
-          </span>
+        <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-16 pt-16 md:px-6 md:pt-20 lg:px-8">
+          <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-12">
+            <div>
+              <span className="mb-6 inline-flex w-fit items-center rounded-full border border-terracotta/40 bg-terracotta/20 px-4 py-1.5 text-sm font-medium text-terracotta-light">
+                ✦ Reaberto em 2026
+              </span>
 
-          <h1 className="max-w-4xl font-display text-display-xl text-cream">
-            Um lugar que a tempestade não conseguiu{' '}
-            <span className="italic text-terracotta">apagar</span>
-          </h1>
+              <h1 className="max-w-4xl font-display text-display-xl text-cream">
+                Um lugar que a tempestade não conseguiu{' '}
+                <span className="italic text-terracotta">apagar</span>
+              </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/75 md:text-xl">
-            Quando a tempestade de janeiro de 2026 devastou o Pé d&apos;Lama,
-            o Virgílio Morouço não desistiu. Hoje o espaço está de volta — mais
-            forte, mais bonito, pronto para receber as vossas festas.
-          </p>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/75 md:text-xl">
+                Quando a tempestade de janeiro de 2026 devastou o Pé d&apos;Lama,
+                o Virgílio Morouço não desistiu. Hoje o espaço está de volta — mais
+                forte, mais bonito, pronto para receber as vossas festas.
+              </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <Link
-              href="/reservas/"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
-            >
-              Reservar a Minha Festa
-            </Link>
-            <Link
-              href="/sobre/"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-cream/40 px-8 text-base font-medium text-cream transition-colors hover:border-cream hover:bg-cream/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
-            >
-              A Nossa História
-            </Link>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/reservas/"
+                  className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                >
+                  Reservar a Minha Festa
+                </Link>
+                <Link
+                  href="/sobre/"
+                  className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-cream/40 px-8 text-base font-medium text-cream transition-colors hover:border-cream hover:bg-cream/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                >
+                  A Nossa História
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative hidden justify-center lg:flex">
+              <Image
+                src="/images/pezinho1.png"
+                alt="Pezinho, mascote do Pé d'Lama"
+                width={1000}
+                height={1512}
+                className="h-auto w-full max-h-[min(70vh,640px)] object-contain object-bottom"
+                priority
+              />
+            </div>
           </div>
 
           <div
