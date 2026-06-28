@@ -46,12 +46,13 @@ export default function Header() {
           className="inline-flex min-h-[44px] items-center gap-2.5 font-display text-xl text-forest transition-colors duration-200 hover:text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta md:gap-3 md:text-2xl"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/logosvg.svg"
             alt=""
-            width={88}
-            height={88}
-            className="h-[72px] w-[72px] shrink-0 object-contain md:h-[88px] md:w-[88px]"
+            width={366}
+            height={381}
+            className="h-[72px] w-auto shrink-0 object-contain md:h-[88px]"
             priority
+            unoptimized
           />
           Pé d&apos;Lama
         </Link>
