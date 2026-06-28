@@ -176,12 +176,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div
-            className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block"
-            aria-hidden="true"
-          >
-            <div className="h-12 w-px animate-bounce bg-cream/50" />
-          </div>
         </div>
       </section>
 
