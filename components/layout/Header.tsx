@@ -50,7 +50,7 @@ export default function Header() {
             alt=""
             width={1000}
             height={1041}
-            className="h-[72px] w-auto shrink-0 object-contain md:h-[88px]"
+            className="h-[65px] w-auto shrink-0 object-contain md:h-[79px]"
             priority
           />
           Pé d&apos;Lama
