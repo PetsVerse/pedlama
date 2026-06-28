@@ -256,7 +256,7 @@ export default function SobrePage() {
       <section className="bg-cream py-section lg:py-section-lg">
         <div className="mx-auto max-w-3xl px-4 text-center md:px-6 lg:px-8">
           <h2 className="font-display text-display-md text-forest">
-            Vem celebrar connosco
+            Reservas brevemente disponíveis
           </h2>
           <p className="mt-6 leading-relaxed text-storm">
             O melhor tributo a esta história é enchê-la de festas novas — de
