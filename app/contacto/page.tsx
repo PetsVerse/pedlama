@@ -193,7 +193,7 @@ export default function ContactoPage() {
           <div className="mx-auto mt-10 max-w-4xl">
             <div className="relative w-full overflow-hidden rounded-sm border border-forest/10">
               <iframe
-                src="https://maps.google.com/maps?q=N356-1+n.º+11,+2405-003+Maceira,+Portugal&output=embed"
+                src="https://maps.google.com/maps?q=39.703778,-8.866861&output=embed"
                 title="Localização do Pé d'Lama no Google Maps"
                 loading="lazy"
                 className="h-[300px] w-full border-0 rounded-sm md:h-[400px]"
@@ -202,7 +202,7 @@ export default function ContactoPage() {
               />
             </div>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=N356-1+11,+2405-003+Maceira,+Portugal"
+              href="https://www.google.com/maps/dir/?api=1&destination=39.703778,-8.866861"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-body text-sm font-bold uppercase tracking-widest text-terracotta transition-colors hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
