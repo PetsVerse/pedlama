@@ -76,8 +76,8 @@ export default function StormCarousel() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
-                priority={index === 0}
-                unoptimized
+                priority={false}
+                loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
           </div>

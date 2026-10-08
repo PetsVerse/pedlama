@@ -12,7 +12,7 @@ import {
 const navLinks = [
   { href: '/pacotes/', label: 'Preços' },
   { href: '/galeria/', label: 'Galeria' },
-  { href: '/sobre/', label: 'A Nossa História' },
+  { href: '/sobre/', label: 'Quem Somos' },
   { href: '/contacto/', label: 'Contacto' },
 ] as const;
 
