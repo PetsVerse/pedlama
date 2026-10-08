@@ -79,25 +79,25 @@ export default function PrivacidadePage() {
 
           <h2>Finalidade</h2>
           <p>
-            Os dados são utilizados exclusivamente para responder aos teus
+            Os dados são utilizados exclusivamente para responder aos seus
             pedidos de reserva, enviar orçamentos, confirmar disponibilidade e
-            manter comunicação relacionada com o teu evento no Pé d&apos;Lama.
+            manter comunicação relacionada com o seu evento no Pé d&apos;Lama.
           </p>
 
           <h2>Conservação</h2>
           <p>
             Os dados de contacto são conservados apenas pelo tempo necessário
             para gerir o pedido e a relação comercial. Apagamos os dados após{' '}
-            <strong>12 meses sem actividade</strong> relacionada com o teu
+            <strong>12 meses sem actividade</strong> relacionada com o seu
             pedido, salvo obrigação legal de conservação mais prolongada.
           </p>
 
           <h2>Direitos</h2>
           <p>
-            Nos termos do Regulamento Geral de Protecção de Dados (RGPD), tens
+            Nos termos do Regulamento Geral de Protecção de Dados (RGPD), tem
             direito de acesso, rectificação, apagamento, limitação do
-            tratamento, oposição e portabilidade dos teus dados. Para exercer
-            estes direitos, contacta-nos por email.
+            tratamento, oposição e portabilidade dos seus dados. Para exercer
+            estes direitos, contacte-nos por email.
           </p>
 
           <h2>Cookies</h2>
@@ -105,7 +105,7 @@ export default function PrivacidadePage() {
             Este website pode utilizar cookies do{' '}
             <strong>Google Analytics</strong> para análise de tráfego e
             melhoria da experiência de utilização. Podes desactivar cookies no
-            teu navegador ou através das ferramentas de opt-out do Google.
+            seu navegador ou através das ferramentas de opt-out do Google.
           </p>
 
           <h2>Contacto</h2>

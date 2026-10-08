@@ -11,7 +11,7 @@ import {
 const PAGE_TITLE = "Contacto — Pé d'Lama";
 
 const PAGE_DESCRIPTION =
-  'Contacta o Virgílio Morouço no Pé d\'Lama: dúvidas, orçamentos sem compromisso e visitas ao espaço de festas. Resposta em 24 horas — ou formulário de reservas.';
+  "Contactos do Pé d'Lama, em Alcogulhe de Cima, Maceira (Leiria): WhatsApp, telefone e email para marcar festas de aniversário ou alugar o espaço para eventos.";
 
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-contacto.jpg';
 

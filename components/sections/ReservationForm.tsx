@@ -110,9 +110,9 @@ export default function ReservationForm() {
           Pedido enviado com sucesso
         </h2>
         <p className="mt-4 leading-relaxed text-storm">
-          Obrigado, {formData.nome.trim()}. Recebemos o teu pedido de reserva e
-          entramos em contacto em breve com a disponibilidade. Se tiveres
-          alguma dúvida entretanto, escreve-nos para{' '}
+          Obrigado, {formData.nome.trim()}. Recebemos o seu pedido de reserva e
+          entraremos em contacto em breve com a disponibilidade. Se tiver
+          alguma dúvida entretanto, escreva-nos para{' '}
           <a
             href={`mailto:${FALLBACK_EMAIL}`}
             className="font-medium text-terracotta underline hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
@@ -134,7 +134,7 @@ export default function ReservationForm() {
         >
           <p className="font-medium">Não foi possível enviar o pedido.</p>
           <p className="mt-1 text-storm">
-            Tenta outra vez dentro de momentos ou envia-nos um email directo
+            Tente novamente dentro de momentos ou envie-nos um email directo
             para{' '}
             <a
               href={`mailto:${FALLBACK_EMAIL}`}
@@ -217,9 +217,9 @@ export default function ReservationForm() {
               className={`mt-2 ${inputClass}`}
             >
               <option value="" disabled>
-                Selecciona uma opção
+                Seleccione uma opção
               </option>
-              <option value="festa infantil">Festa infantil</option>
+              <option value="festa infantil">Festa de aniversário (criança)</option>
               <option value="evento adultos">Evento de adultos</option>
               <option value="outro">Outro</option>
             </select>
@@ -271,13 +271,13 @@ export default function ReservationForm() {
             value={formData.mensagem}
             onChange={(e) => updateField('mensagem', e.target.value)}
             className={`mt-2 min-h-[44px] resize-y ${inputClass}`}
-            placeholder="Conta-nos mais sobre o evento que imaginas (opcional)"
+            placeholder="Conte-nos mais sobre a festa ou evento (opcional)"
           />
         </div>
 
         <p className="text-xs leading-relaxed text-storm/80">
-          Ao enviar este pedido, aceitas que tratemos os teus dados para
-          responder ao orçamento, nos termos da nossa{' '}
+          Ao enviar este pedido, aceita que tratemos os seus dados para
+          responder ao pedido, nos termos da nossa{' '}
           <Link
             href="/privacidade/"
             className="font-medium text-terracotta underline hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
@@ -298,7 +298,7 @@ export default function ReservationForm() {
       </div>
 
       <p className="mt-8 text-center text-sm text-storm">
-        Preferes email?{' '}
+        Prefere email?{' '}
         <a
           href={`mailto:${FALLBACK_EMAIL}`}
           className="font-medium text-terracotta underline hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"

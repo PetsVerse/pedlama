@@ -7,7 +7,7 @@ import { RESERVATIONS_LIVE } from '@/lib/site-config';
 const PAGE_TITLE = "Reservas — Pé d'Lama";
 
 const PAGE_DESCRIPTION =
-  'Reserva o teu evento no Pé d\'Lama: formulário simples, resposta em 24 horas e orçamento sem compromisso. Festas infantis e eventos adultos — envia o pedido!';
+  "Peça a reserva da festa de aniversário ou do seu evento no Pé d'Lama, em Maceira (Leiria). Formulário simples e sem compromisso.";
 
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-reservas.jpg';
 
@@ -99,11 +99,11 @@ export default function ReservasPage() {
 
         <header className="py-section lg:py-section-lg">
           <h1 className="font-display text-display-lg text-forest">
-            Reserva o teu evento
+            Reservar uma festa
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-storm">
-            Preenche o formulário abaixo e respondemos em até 24 horas com
-            disponibilidade e orçamento — sem compromisso até confirmares.
+            Preencha o formulário e entramos em contacto com a disponibilidade
+            para a data pretendida — sem compromisso.
           </p>
         </header>
 

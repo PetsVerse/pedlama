@@ -7,7 +7,7 @@ import { CONTACT } from '@/lib/site-config';
 const PAGE_TITLE = "Galeria — Pé d'Lama";
 
 const PAGE_DESCRIPTION =
-  'Fotos do Pé d\'Lama: espaço recuperado após a tempestade de 2026, antes e depois, festas infantis e eventos para adultos. Vê o nosso espaço em imagens online.';
+  "Fotos do Pé d'Lama em Maceira, Leiria: o espaço de festas de aniversário, a zona exterior e o antes e depois da tempestade de 2026.";
 
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-galeria.jpg';
 
