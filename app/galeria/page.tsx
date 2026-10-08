@@ -9,7 +9,7 @@ const PAGE_TITLE = "Galeria — Pé d'Lama";
 const PAGE_DESCRIPTION =
   "Fotos do Pé d'Lama em Maceira, Leiria: o espaço de festas de aniversário, a zona exterior e o antes e depois da tempestade de 2026.";
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-galeria.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

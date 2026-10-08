@@ -11,7 +11,7 @@ const PAGE_TITLE =
 const PAGE_DESCRIPTION =
   "Festas de aniversário para crianças em Maceira (Leiria): 1h30 de diversão com monitores, lanche e bolo incluídos, desde 18,50 € por criança. Espaço interior e exterior em contacto com a natureza.";
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-home.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

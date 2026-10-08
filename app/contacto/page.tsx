@@ -13,7 +13,7 @@ const PAGE_TITLE = "Contacto — Pé d'Lama";
 const PAGE_DESCRIPTION =
   "Contactos do Pé d'Lama, em Alcogulhe de Cima, Maceira (Leiria): WhatsApp, telefone e email para marcar festas de aniversário ou alugar o espaço para eventos.";
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-contacto.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 const CONTACT_EMAIL = CONTACT.email;
 const CONTACT_PHONE = CONTACT.phone;

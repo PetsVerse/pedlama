@@ -8,7 +8,7 @@ const PAGE_TITLE = "Preços — Festas de Aniversário | Pé d'Lama, Maceira";
 const PAGE_DESCRIPTION =
   'Preçário das festas de aniversário no Pé d\'Lama, Maceira (Leiria): 19 € por criança (18,50 € acima de 20), menu, bolo, balões e convites incluídos. Aluguer para outros eventos sob consulta.';
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-pacotes.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

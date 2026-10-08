@@ -9,7 +9,7 @@ const PAGE_TITLE = "Reservas — Pé d'Lama";
 const PAGE_DESCRIPTION =
   "Peça a reserva da festa de aniversário ou do seu evento no Pé d'Lama, em Maceira (Leiria). Formulário simples e sem compromisso.";
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-reservas.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

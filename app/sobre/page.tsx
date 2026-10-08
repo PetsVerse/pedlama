@@ -7,7 +7,7 @@ const PAGE_TITLE = "A Nossa História — Pé d'Lama";
 const PAGE_DESCRIPTION =
   'A história real do Pé d\'Lama: devastado pela tempestade de 2026, reconstruído por Virgílio Morouço. Resiliência, família e a reabertura de um espaço único.';
 
-const OG_IMAGE = 'https://www.pedlama.pt/images/og-sobre.jpg';
+const OG_IMAGE = 'https://www.pedlama.pt/images/og-default.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
