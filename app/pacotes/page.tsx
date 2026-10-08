@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ContactButtons from '@/components/ui/ContactButtons';
+import { BIRTHDAY_PRICING, FAQ } from '@/lib/site-config';
 
-const PAGE_TITLE = "Pacotes de Festas e Eventos — Pé d'Lama";
+const PAGE_TITLE = "Preços — Festas de Aniversário | Pé d'Lama, Maceira";
 
 const PAGE_DESCRIPTION =
-  'Pacotes de festa infantil e eventos para adultos no Pé d\'Lama, Portugal. Festas à medida na natureza — orçamento sem compromisso para famílias, grupos e mais.';
+  'Preçário das festas de aniversário no Pé d\'Lama, Maceira (Leiria): 19 € por criança (18,50 € acima de 20), menu, bolo, balões e convites incluídos. Aluguer para outros eventos sob consulta.';
 
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-pacotes.jpg';
 
@@ -29,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: OG_IMAGE,
           width: 1200,
           height: 630,
-          alt: "Pacotes de festas e eventos no Pé d'Lama",
+          alt: "Preçário das festas de aniversário no Pé d'Lama",
         },
       ],
     },
@@ -44,115 +46,34 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const pacotesJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
+  '@graph': [
     {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Início',
-      item: 'https://www.pedlama.pt/',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Início',
+          item: 'https://www.pedlama.pt/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Preços',
+          item: 'https://www.pedlama.pt/pacotes/',
+        },
+      ],
     },
     {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Pacotes',
-      item: 'https://www.pedlama.pt/pacotes/',
+      '@type': 'FAQPage',
+      mainEntity: FAQ.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
     },
   ],
 };
-
-interface PackageCard {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  features: string[];
-  note: string;
-  highlighted?: boolean;
-}
-
-const packages: PackageCard[] = [
-  {
-    id: 'infantil',
-    title: 'Festa Infantil',
-    subtitle: 'Para os 3 aos 12 anos',
-    description:
-      'Um espaço verde, seguro e amplo, cheio de natureza à volta das crianças. A nossa equipa apoia-vos em cada detalhe para que o dia corra sem stress — só tenham de chegar e celebrar.',
-    features: [
-      'Espaço exterior amplo e vedado',
-      'Área de jogos e atividades',
-      'Apoio na decoração e montagem',
-      'Instalações sanitárias',
-      'Estacionamento',
-      'Até 50 convidados',
-    ],
-    note: 'Animação e catering disponíveis como extra',
-  },
-  {
-    id: 'completo',
-    title: 'Pacote Completo',
-    subtitle: 'A opção sem preocupações',
-    description:
-      'Deixas tudo connosco — apareces e celebras. Coordenamos decoração, animação e catering para que a vossa festa seja exactamente como a sonham, sem correrias no dia.',
-    features: [
-      'Tudo do pacote base incluído',
-      'Decoração temática',
-      'Animação profissional',
-      'Coordenação no dia',
-      'Catering',
-      'Personalizado a 100%',
-    ],
-    note: 'Preço mediante consulta — pedido de orçamento sem compromisso',
-    highlighted: true,
-  },
-  {
-    id: 'adultos',
-    title: 'Evento de Adultos',
-    subtitle: 'Reuniões, comemorações e mais',
-    description:
-      'Reformas de anos, aniversários, reuniões de família ou encontros entre amigos — um ambiente diferente, com natureza e liberdade para configurar o espaço à vossa medida.',
-    features: [
-      'Espaço coberto e descoberto',
-      'Até 100 pessoas',
-      'Bar de apoio',
-      'Estacionamento amplo',
-      'Espaço verde',
-      'Flexibilidade de configuração',
-    ],
-    note: 'Disponível para eventos diurnos e nocturnos',
-  },
-];
-
-function FeatureList({
-  features,
-  highlighted,
-}: {
-  features: string[];
-  highlighted?: boolean;
-}) {
-  return (
-    <ul className="mt-6 space-y-3">
-      {features.map((feature) => (
-        <li
-          key={feature}
-          className={`flex items-start gap-3 text-sm ${
-            highlighted ? 'text-cream/80' : 'text-storm'
-          }`}
-        >
-          <span
-            className={`mt-0.5 shrink-0 font-bold ${
-              highlighted ? 'text-terracotta-light' : 'text-terracotta'
-            }`}
-            aria-hidden="true"
-          >
-            ✓
-          </span>
-          {feature}
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 export default function PacotesPage() {
   return (
@@ -181,111 +102,171 @@ export default function PacotesPage() {
             </li>
             <li>
               <span className="font-medium text-forest" aria-current="page">
-                Pacotes
+                Preços
               </span>
             </li>
           </ol>
         </nav>
 
-        <header className="py-section text-center lg:max-w-3xl lg:mx-auto lg:py-section-lg">
-          <h1 className="font-display text-display-lg text-forest">
-            Festas que ficam na memória
+        <header className="pb-10 pt-12 text-center lg:mx-auto lg:max-w-3xl lg:pt-section">
+          <p className="text-xs font-bold uppercase tracking-widest text-terracotta">
+            Preçário
+          </p>
+          <h1 className="mt-3 font-display text-display-lg text-forest">
+            Aniversários com menu incluído
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-storm">
-            Escolhe o pacote ideal para a tua celebração ou pede-nos algo feito
-            à medida. Respondemos com orçamento claro — sem compromisso.
+            {BIRTHDAY_PRICING.duration}. Monitores, lanche, bolo, balões e
+            convites — tudo num só preço por criança.
           </p>
         </header>
       </div>
 
-      <section className="pb-section lg:pb-section-lg">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3 lg:gap-6 lg:items-stretch">
-            {packages.map((pkg) => {
-              const highlighted = pkg.highlighted === true;
-
-              return (
-                <article
-                  key={pkg.id}
-                  className={`relative flex flex-col rounded-lg border p-8 ${
-                    highlighted
-                      ? 'border-forest bg-forest lg:scale-[1.02] lg:shadow-xl'
-                      : 'border-forest/15 bg-cream'
-                  }`}
+      {/* Preço + menu */}
+      <section className="bg-offwhite py-12 lg:py-section">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 md:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="rounded-lg border-2 border-terracotta/40 bg-cream p-8 md:p-10">
+            <h2 className="font-display text-2xl text-forest">Preço</h2>
+            <dl className="mt-6 divide-y divide-forest/10">
+              {BIRTHDAY_PRICING.tiers.map((tier) => (
+                <div
+                  key={tier.label}
+                  className="flex items-baseline justify-between gap-4 py-4"
                 >
-                  {highlighted && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-terracotta px-4 py-1 text-xs font-bold uppercase tracking-wider text-cream">
-                      Mais popular
+                  <dt className="text-storm">{tier.label}</dt>
+                  <dd className="text-right">
+                    <span className="font-display text-3xl font-bold text-forest">
+                      {tier.price}
                     </span>
-                  )}
+                    <span className="block text-xs text-storm">por criança</span>
+                  </dd>
+                </div>
+              ))}
+              <div className="flex items-baseline justify-between gap-4 py-4">
+                <dt className="text-storm">Valor mínimo por festa</dt>
+                <dd className="font-bold text-forest">
+                  {BIRTHDAY_PRICING.minimum}
+                </dd>
+              </div>
+            </dl>
 
-                  <h2
-                    className={`font-display text-2xl ${
-                      highlighted ? 'text-cream' : 'text-forest'
-                    }`}
-                  >
-                    {pkg.title}
-                  </h2>
-                  <p
-                    className={`mt-1 text-sm font-medium ${
-                      highlighted ? 'text-terracotta-light' : 'text-terracotta'
-                    }`}
-                  >
-                    {pkg.subtitle}
-                  </p>
-                  <p
-                    className={`mt-4 flex-1 text-sm leading-relaxed ${
-                      highlighted ? 'text-cream/85' : 'text-storm'
-                    }`}
-                  >
-                    {pkg.description}
-                  </p>
+            <h3 className="mt-8 text-xs font-bold uppercase tracking-widest text-terracotta">
+              Extras opcionais
+            </h3>
+            <ul className="mt-3 space-y-2">
+              {BIRTHDAY_PRICING.extras.map((extra) => (
+                <li
+                  key={extra.label}
+                  className="flex justify-between gap-4 text-storm"
+                >
+                  <span>{extra.label}</span>
+                  <span className="font-bold text-forest">{extra.price}</span>
+                </li>
+              ))}
+            </ul>
 
-                  <FeatureList
-                    features={pkg.features}
-                    highlighted={highlighted}
-                  />
-
-                  <p
-                    className={`mt-6 text-sm italic ${
-                      highlighted ? 'text-cream/70' : 'text-storm/80'
-                    }`}
-                  >
-                    {pkg.note}
-                  </p>
-
-                  <Link
-                    href="/reservas/"
-                    className={`mt-8 inline-flex min-h-[44px] items-center justify-center rounded-md px-6 text-center text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                      highlighted
-                        ? 'bg-terracotta text-white hover:bg-terracotta-dark focus-visible:outline-cream'
-                        : 'bg-forest text-cream hover:bg-forest-dark focus-visible:outline-terracotta'
-                    }`}
-                  >
-                    Pedir Orçamento
-                  </Link>
-                </article>
-              );
-            })}
+            <h3 className="mt-8 text-xs font-bold uppercase tracking-widest text-terracotta">
+              Incluído
+            </h3>
+            <ul className="mt-3 space-y-2 text-storm">
+              {BIRTHDAY_PRICING.included.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="text-forest" aria-hidden="true">
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <div className="rounded-lg border border-forest/10 bg-cream p-8 md:p-10">
+            <h2 className="font-display text-2xl text-forest">Menu do lanche</h2>
+            <ul className="mt-6 space-y-3 text-storm">
+              {BIRTHDAY_PRICING.menu.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-storm">
+              Opção de fruta natural: acréscimo de 1 € por criança.
+            </p>
+
+            <div className="mt-8 rounded-md bg-terracotta/10 p-5 text-sm text-forest">
+              <p className="font-bold">Meias antiderrapantes obrigatórias</p>
+              <p className="mt-1 text-storm">
+                Para a segurança de todos na zona de diversão.
+              </p>
+            </div>
+
+            <h3 className="mt-8 text-xs font-bold uppercase tracking-widest text-terracotta">
+              Pagamento
+            </h3>
+            <p className="mt-3 leading-relaxed text-storm">
+              {BIRTHDAY_PRICING.payment}
+            </p>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-3xl px-4 text-center md:px-6 lg:px-8">
+          <p className="font-display text-xl text-forest">
+            Quer saber se a sua data está livre?
+          </p>
+          <p className="mt-2 text-storm">
+            Para dias, horários e disponibilidade, fale connosco.
+          </p>
+          <ContactButtons className="mt-6 justify-center" />
         </div>
       </section>
 
-      <section className="bg-cream py-section text-center lg:py-section-lg">
-        <div className="mx-auto max-w-2xl px-4 md:px-6 lg:px-8">
-          <h2 className="font-display text-display-md text-forest">
-            Tens dúvidas?
+      {/* Outros eventos */}
+      <section className="bg-forest py-section">
+        <div className="mx-auto max-w-3xl px-4 text-center md:px-6 lg:px-8">
+          <h2 className="font-display text-display-md text-cream">
+            Aluguer do espaço para outros eventos
           </h2>
-          <p className="mt-4 text-storm">
-            Estamos disponíveis para esclarecer tudo sobre pacotes, datas e
-            personalização.
+          <p className="mt-4 leading-relaxed text-cream/80">
+            Batizados, aniversários de adultos, encontros de família ou de
+            empresa. Espaço interior e exterior, em contacto com a natureza.
           </p>
-          <Link
-            href="/contacto/"
-            className="mt-6 inline-flex min-h-[44px] items-center text-base font-bold text-terracotta transition-colors hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
-          >
-            Falar connosco →
-          </Link>
+          <p className="mt-6 font-display text-2xl text-terracotta-light">
+            Preço sob consulta
+          </p>
+          <ContactButtons
+            kind="event"
+            tone="dark"
+            className="mt-8 justify-center"
+          />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="scroll-mt-24 bg-cream py-section">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
+          <h2 className="text-center font-display text-display-md text-forest">
+            Perguntas frequentes
+          </h2>
+          <div className="mt-10 divide-y divide-forest/10 border-y border-forest/10">
+            {FAQ.map((item) => (
+              <details key={item.q} className="group py-2">
+                <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-4 font-medium text-forest">
+                  {item.q}
+                  <span
+                    className="text-terracotta transition-transform group-open:rotate-45"
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="pb-4 leading-relaxed text-storm">{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </>

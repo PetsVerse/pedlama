@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
+import ContactButtons from '@/components/ui/ContactButtons';
+import { CONTACT } from '@/lib/site-config';
 
 const PAGE_TITLE = "Galeria — Pé d'Lama";
 
@@ -65,77 +68,35 @@ interface GalleryCategory {
   id: string;
   title: string;
   description: string;
-  cellBg: string;
-  cells: { id: string; placeholder: string }[];
+  /** Fotos reais; vazio = mostra "fotos em breve" */
+  photos: { src: string; alt: string }[];
 }
 
+// Para adicionar fotos: colocar em public/images/galeria/ e listar aqui.
 const categories: GalleryCategory[] = [
   {
     id: 'espaco-hoje',
     title: 'O Espaço Hoje',
     description:
-      'O Pé d\'Lama depois da recuperação — verde, limpo e cheio de vida.',
-    cellBg: 'bg-forest/10',
-    cells: [
-      { id: 'hoje-1', placeholder: 'Foto do espaço actual 1 — vista geral do recinto' },
-      { id: 'hoje-2', placeholder: 'Foto do espaço actual 2 — zona exterior / relvado' },
-      { id: 'hoje-3', placeholder: 'Foto do espaço actual 3 — área de festas' },
-      { id: 'hoje-4', placeholder: 'Foto do espaço actual 4 — detalhe natureza / árvores' },
-    ],
+      'A zona de diversão, as salas de lanche e o espaço exterior em contacto com a natureza.',
+    photos: [],
+  },
+  {
+    id: 'festas',
+    title: 'Festas de Aniversário',
+    description: 'Momentos das festas que aqui celebrámos.',
+    photos: [],
   },
   {
     id: 'historia',
-    title: 'A Nossa História',
+    title: 'Antes: a tempestade de 2026',
     description:
-      'O antes e o depois. A tempestade de 2026 e a reconstrução.',
-    cellBg: 'bg-storm/15',
-    cells: [
-      {
-        id: 'hist-1',
-        placeholder:
-          'pedlama1.jpg — foto real da tempestade (cliente). Substituir por next/image',
-      },
-      {
-        id: 'hist-2',
-        placeholder:
-          'pedlama2.jpg — foto real da tempestade (cliente). Substituir por next/image',
-      },
-      {
-        id: 'hist-3',
-        placeholder:
-          'pedlama3.jpg — foto real da tempestade (cliente). Substituir por next/image',
-      },
-      {
-        id: 'hist-4',
-        placeholder:
-          'pedlama4.jpg — foto real da tempestade (cliente). Substituir por next/image',
-      },
-    ],
-  },
-  {
-    id: 'infantis',
-    title: 'Festas Infantis',
-    description:
-      'Momentos inesquecíveis das festas que aqui celebrámos.',
-    cellBg: 'bg-forest/10',
-    cells: [
-      { id: 'inf-1', placeholder: 'Festa infantil 1 — crianças no espaço exterior' },
-      { id: 'inf-2', placeholder: 'Festa infantil 2 — decoração e mesa de festa' },
-      { id: 'inf-3', placeholder: 'Festa infantil 3 — jogos e atividades' },
-      { id: 'inf-4', placeholder: 'Festa infantil 4 — momento de celebração em família' },
-    ],
-  },
-  {
-    id: 'adultos',
-    title: 'Eventos de Adultos',
-    description:
-      'Reuniões, comemorações e muito mais.',
-    cellBg: 'bg-forest/10',
-    cells: [
-      { id: 'adu-1', placeholder: 'Evento adultos 1 — reunião ou comemoração no espaço' },
-      { id: 'adu-2', placeholder: 'Evento adultos 2 — zona coberta / convívio' },
-      { id: 'adu-3', placeholder: 'Evento adultos 3 — ambiente nocturno ou diurno' },
-      { id: 'adu-4', placeholder: 'Evento adultos 4 — grupo e espaço configurado' },
+      'Como ficou o espaço depois da tempestade de janeiro de 2026 — antes de o reconstruirmos.',
+    photos: [
+      { src: '/images/pedlama1.jpg', alt: "Árvores derrubadas no Pé d'Lama pela tempestade de janeiro de 2026" },
+      { src: '/images/pedlama3.jpg', alt: "Árvore arrancada pela raiz no jardim do Pé d'Lama" },
+      { src: '/images/pedlama6.jpg', alt: "Telhado danificado pela tempestade no Pé d'Lama" },
+      { src: '/images/pedlama7.jpg', alt: "Árvores e galhos caídos junto ao edifício do Pé d'Lama" },
     ],
   },
 ];
@@ -178,8 +139,7 @@ export default function GaleriaPage() {
             O nosso espaço em imagens
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-storm">
-            Da tempestade à reabertura — e de todas as festas que aqui
-            aconteceram.
+            O espaço, as festas e o caminho que fizemos até aqui.
           </p>
         </header>
       </div>
@@ -198,25 +158,37 @@ export default function GaleriaPage() {
               </h2>
               <p className="mt-3 max-w-2xl text-storm">{category.description}</p>
 
-              {category.id === 'historia' && (
-                <p className="mt-2 text-sm italic text-storm/80">
-                  Nota: estas quatro células recebem as fotos reais da tempestade
-                  (pedlama1.jpg a pedlama5.jpg — 5 ficheiros do cliente; usar as
-                  4 principais na galeria).
-                </p>
-              )}
-
-              <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-                {category.cells.map((cell) => (
-                  <div
-                    key={cell.id}
-                    className={`relative aspect-square overflow-hidden rounded-lg ${category.cellBg}`}
+              {category.photos.length > 0 ? (
+                <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+                  {category.photos.map((photo) => (
+                    <div
+                      key={photo.src}
+                      className="relative aspect-square overflow-hidden rounded-lg bg-storm/10"
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 1024px) 50vw, 25vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-8 rounded-lg border border-dashed border-forest/25 bg-cream px-6 py-10 text-center text-storm">
+                  📸 Fotos novas em breve — entretanto, veja o nosso{' '}
+                  <a
+                    href={CONTACT.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-terracotta underline hover:text-terracotta-dark"
                   >
-                    {/* Substituir por next/image: {cell.placeholder} */}
-                    <span className="sr-only">{cell.placeholder}</span>
-                  </div>
-                ))}
-              </div>
+                    Instagram
+                  </a>
+                  .
+                </div>
+              )}
             </div>
           </section>
         ))}
@@ -225,17 +197,12 @@ export default function GaleriaPage() {
       <section className="bg-cream py-section text-center lg:py-section-lg">
         <div className="mx-auto max-w-2xl px-4 md:px-6 lg:px-8">
           <h2 className="font-display text-display-md text-forest">
-            Queres ser o próximo?
+            A próxima festa pode ser a vossa
           </h2>
           <p className="mt-4 text-storm">
-            A tua festa ou evento pode ser o próximo capítulo desta galeria.
+            Fale connosco para saber as datas disponíveis.
           </p>
-          <Link
-            href="/reservas/"
-            className="mt-8 inline-flex min-h-[44px] items-center justify-center rounded-md bg-terracotta px-10 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
-          >
-            Reservar Agora
-          </Link>
+          <ContactButtons className="mt-8 justify-center" />
         </div>
       </section>
     </>

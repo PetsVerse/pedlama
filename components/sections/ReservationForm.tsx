@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import type { ReservationPayload } from '@/app/api/reservas/route';
+import { CONTACT, WEB3FORMS_KEY } from '@/lib/site-config';
+
+type TipoEvento = 'festa infantil' | 'evento adultos' | 'outro';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -10,7 +12,7 @@ interface FormData {
   nome: string;
   email: string;
   telefone: string;
-  tipo_evento: ReservationPayload['tipo_evento'] | '';
+  tipo_evento: TipoEvento | '';
   data_pretendida: string;
   num_convidados: string;
   mensagem: string;
@@ -29,7 +31,7 @@ const INITIAL_FORM: FormData = {
 const inputClass =
   'w-full min-h-[44px] rounded-sm border border-forest/20 bg-offwhite px-4 py-2 text-storm transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest/30';
 
-const FALLBACK_EMAIL = 'pedlama.maceira@gmail.com';
+const FALLBACK_EMAIL = CONTACT.email;
 
 export default function ReservationForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
@@ -58,25 +60,33 @@ export default function ReservationForm() {
 
     setStatus('loading');
 
-    const payload: ReservationPayload = {
-      nome: formData.nome.trim(),
-      email: formData.email.trim(),
-      telefone: formData.telefone.trim(),
-      tipo_evento: formData.tipo_evento as ReservationPayload['tipo_evento'],
-      data_pretendida: formData.data_pretendida,
-      ...(formData.num_convidados.trim()
-        ? { num_convidados: Number(formData.num_convidados) }
-        : {}),
-      ...(formData.mensagem.trim()
-        ? { mensagem: formData.mensagem.trim() }
-        : {}),
+    const tipoLabel: Record<TipoEvento, string> = {
+      'festa infantil': 'Festa de aniversário (criança)',
+      'evento adultos': 'Evento de adultos',
+      outro: 'Outro',
     };
 
     try {
-      const response = await fetch('/api/reservas', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Novo pedido de reserva — ${formData.nome.trim()}`,
+          from_name: "Site Pé d'Lama",
+          replyto: formData.email.trim(),
+          Nome: formData.nome.trim(),
+          Email: formData.email.trim(),
+          Telefone: formData.telefone.trim(),
+          'Tipo de evento': tipoLabel[formData.tipo_evento as TipoEvento],
+          'Data pretendida': formData.data_pretendida,
+          'N.º de convidados': formData.num_convidados.trim() || '—',
+          Mensagem: formData.mensagem.trim() || '—',
+          botcheck: '',
+        }),
       });
 
       if (!response.ok) {
@@ -101,8 +111,8 @@ export default function ReservationForm() {
         </h2>
         <p className="mt-4 leading-relaxed text-storm">
           Obrigado, {formData.nome.trim()}. Recebemos o teu pedido de reserva e
-          respondemos em até 24 horas — sem compromisso. Verifica também o teu
-          email; se não receberes confirmação, contacta-nos em{' '}
+          entramos em contacto em breve com a disponibilidade. Se tiveres
+          alguma dúvida entretanto, escreve-nos para{' '}
           <a
             href={`mailto:${FALLBACK_EMAIL}`}
             className="font-medium text-terracotta underline hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"

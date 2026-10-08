@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ReservationForm from '@/components/sections/ReservationForm';
+import ContactButtons from '@/components/ui/ContactButtons';
+import { RESERVATIONS_LIVE } from '@/lib/site-config';
 
 const PAGE_TITLE = "Reservas — Pé d'Lama";
 
@@ -13,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: { absolute: PAGE_TITLE },
     description: PAGE_DESCRIPTION,
-    robots: { index: true, follow: true },
+    robots: { index: RESERVATIONS_LIVE, follow: true },
     alternates: {
       canonical: 'https://www.pedlama.pt/reservas/',
       languages: { 'pt-PT': 'https://www.pedlama.pt/reservas/' },
@@ -106,7 +108,11 @@ export default function ReservasPage() {
         </header>
 
         <div className="pb-section lg:pb-section-lg">
-          <ReservationForm />
+          {RESERVATIONS_LIVE ? (
+            <ReservationForm />
+          ) : (
+            <ContactButtons />
+          )}
         </div>
       </div>
     </>

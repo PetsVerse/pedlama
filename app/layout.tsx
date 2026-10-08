@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Lato, Playfair_Display } from 'next/font/google';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
+import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
+import { CONTACT } from '@/lib/site-config';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     shortcut: '/images/favicon.ico',
   },
   openGraph: {
-    title: "Pé d'Lama — Festas com alma em Portugal",
+    title: "Pé d'Lama — Festas de aniversário em Maceira, Leiria",
     description: siteDescription,
     url: 'https://www.pedlama.pt/',
     siteName: "Pé d'Lama",
@@ -63,13 +65,13 @@ export const metadata: Metadata = {
         url: 'https://www.pedlama.pt/images/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: "Pé d'Lama — espaço de festas em Portugal",
+        alt: "Pé d'Lama — festas de aniversário em Maceira",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pé d'Lama — Festas com alma em Portugal",
+    title: "Pé d'Lama — Festas de aniversário em Maceira, Leiria",
     description: siteDescription,
     images: ['https://www.pedlama.pt/images/og-default.jpg'],
   },
@@ -77,22 +79,32 @@ export const metadata: Metadata = {
 
 const siteJsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'EventVenue',
-      name: "Pé d'Lama",
-      url: 'https://www.pedlama.pt',
-      description:
-        'Espaço de festas infantis e eventos de adultos em Portugal — Natureza · Sentidos · Família',
-      address: { '@type': 'PostalAddress', addressCountry: 'PT' },
-      founder: { '@type': 'Person', name: 'Virgílio Morouço' },
-    },
-    {
-      '@type': 'Organization',
-      name: "Pé d'Lama",
-      url: 'https://www.pedlama.pt',
-    },
-  ],
+  '@type': ['LocalBusiness', 'EventVenue'],
+  '@id': 'https://www.pedlama.pt/#negocio',
+  name: "Pé d'Lama",
+  url: 'https://www.pedlama.pt',
+  logo: 'https://www.pedlama.pt/images/logopedlama.png',
+  image: 'https://www.pedlama.pt/images/logopedlama.png',
+  description:
+    'Festas de aniversário para crianças e aluguer de espaço para eventos em Maceira, Leiria — Natureza · Sentidos · Família',
+  telephone: CONTACT.phoneHref,
+  email: CONTACT.email,
+  priceRange: '€',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: CONTACT.streetAddress,
+    postalCode: CONTACT.postalCode,
+    addressLocality: CONTACT.locality,
+    addressRegion: CONTACT.region,
+    addressCountry: 'PT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: CONTACT.latitude,
+    longitude: CONTACT.longitude,
+  },
+  areaServed: ['Maceira', 'Leiria', 'Marinha Grande', 'Batalha', 'Nazaré'],
+  sameAs: [CONTACT.instagram, CONTACT.facebook],
 };
 
 export default function RootLayout({
@@ -101,9 +113,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" className={`${playfair.variable} ${lato.variable}`}>
+    <html lang="pt-PT" className={`${playfair.variable} ${lato.variable}`}>
       <body className="font-body">
-        {/* GA: substituir por GoogleAnalytics de next/third-parties */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
@@ -111,6 +122,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen pt-16 md:pt-20">{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );

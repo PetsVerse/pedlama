@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import StormCarousel from '@/components/ui/StormCarousel';
-import { prelaunchHidden, RESERVATIONS_LIVE } from '@/lib/site-config';
 
 const PAGE_TITLE = "A Nossa História — Pé d'Lama";
 
@@ -224,11 +223,7 @@ export default function SobrePage() {
                     >
                       {moment.phase === 'Janeiro 2026' ? (
                         <StormCarousel />
-                      ) : (
-                        <div className="aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">
-                          {/* Substituir por next/image: foto do momento */}
-                        </div>
-                      )}
+                      ) : null}
                     </div>
                   </li>
                 );
@@ -256,7 +251,7 @@ export default function SobrePage() {
       <section className="bg-cream py-section lg:py-section-lg">
         <div className="mx-auto max-w-3xl px-4 text-center md:px-6 lg:px-8">
           <h2 className="font-display text-display-md text-forest">
-            Reservas brevemente disponíveis
+            Venha conhecer o Pé d&apos;Lama
           </h2>
           <p className="mt-6 leading-relaxed text-storm">
             O melhor tributo a esta história é enchê-la de festas novas — de
@@ -266,11 +261,9 @@ export default function SobrePage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/pacotes/"
-              className={`${prelaunchHidden} inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto`}
-              aria-hidden={!RESERVATIONS_LIVE}
-              tabIndex={RESERVATIONS_LIVE ? undefined : -1}
+              className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:w-auto`}
             >
-              Ver Pacotes
+              Ver Preços
             </Link>
             <Link
               href="/galeria/"

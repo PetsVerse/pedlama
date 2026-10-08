@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import {
+  CONTACT,
+  FULL_ADDRESS,
   prelaunchNavHidden,
   RESERVATIONS_LIVE,
 } from '@/lib/site-config';
 
 const navLinks = [
-  { href: '/sobre/', label: 'A Nossa História' },
+  { href: '/pacotes/', label: 'Preços' },
   { href: '/galeria/', label: 'Galeria' },
-  { href: '/pacotes/', label: 'Pacotes' },
+  { href: '/sobre/', label: 'A Nossa História' },
   { href: '/contacto/', label: 'Contacto' },
   { href: '/reservas/', label: 'Reservar' },
 ] as const;
@@ -19,7 +21,7 @@ const legalLinks = [
 
 const socialLinks = [
   {
-    href: 'https://www.facebook.com/profile.php?id=61591089437946',
+    href: CONTACT.facebook,
     label: 'Facebook',
     icon: (
       <svg
@@ -34,7 +36,7 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://www.instagram.com/pedlama.maceira/',
+    href: CONTACT.instagram,
     label: 'Instagram',
     icon: (
       <svg
@@ -55,14 +57,24 @@ export default function Footer() {
 
   return (
     <footer className="bg-forest text-cream/80">
-      {/* ADSENSE SLOT: footer-banner */}
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3 md:gap-8">
           <div>
             <p className="font-display text-2xl text-cream">Pé d&apos;Lama</p>
             <p className="mt-3 text-sm leading-relaxed text-cream/80">
-              Um espaço com história. Festas com alma.
+              Festas de aniversário e eventos em contacto com a natureza.
             </p>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-cream/80">
+              {FULL_ADDRESS}
+              <br />
+              <a href={`tel:${CONTACT.phoneHref}`} className="hover:text-cream">
+                {CONTACT.phone}
+              </a>
+              <br />
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-cream">
+                {CONTACT.email}
+              </a>
+            </address>
             <p className="mt-4 text-xs tracking-wide text-cream/60">
               Natureza · Sentidos · Família
             </p>
@@ -94,17 +106,13 @@ export default function Footer() {
                 <li
                   key={link.href}
                   className={prelaunchNavHidden(link.href)}
-                  aria-hidden={
-                    !RESERVATIONS_LIVE &&
-                    (link.href === '/pacotes/' || link.href === '/reservas/')
-                  }
+                  aria-hidden={!RESERVATIONS_LIVE && link.href === '/reservas/'}
                 >
                   <Link
                     href={link.href}
                     className="inline-flex min-h-[44px] items-center text-sm text-cream/80 transition-colors hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
                     tabIndex={
-                      !RESERVATIONS_LIVE &&
-                      (link.href === '/pacotes/' || link.href === '/reservas/')
+                      !RESERVATIONS_LIVE && link.href === '/reservas/'
                         ? -1
                         : undefined
                     }
@@ -137,10 +145,10 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-cream/15 pt-8 text-center">
           <p className="font-display text-lg italic text-cream">
-            De pé outra vez. Sempre.
+            Aprender, explorar e crescer em contacto com a natureza.
           </p>
           <p className="mt-4 text-xs text-cream/60">
-            © {year} Pé d&apos;Lama · Virgílio Morouço · Portugal
+            © {year} Pé d&apos;Lama · Maceira, Leiria
           </p>
         </div>
       </div>

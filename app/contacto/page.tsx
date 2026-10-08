@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RESERVATIONS_LIVE } from '@/lib/site-config';
+import ContactButtons from '@/components/ui/ContactButtons';
+import {
+  CONTACT,
+  FULL_ADDRESS,
+  MAPS_DIRECTIONS_URL,
+  RESERVATIONS_LIVE,
+} from '@/lib/site-config';
 
 const PAGE_TITLE = "Contacto — Pé d'Lama";
 
@@ -9,10 +15,9 @@ const PAGE_DESCRIPTION =
 
 const OG_IMAGE = 'https://www.pedlama.pt/images/og-contacto.jpg';
 
-// Substituir pelos contactos reais quando confirmados
-const CONTACT_EMAIL = 'pedlama.maceira@gmail.com';
-const CONTACT_PHONE = '+351 915 716 693';
-const CONTACT_PHONE_HREF = '+351915716693';
+const CONTACT_EMAIL = CONTACT.email;
+const CONTACT_PHONE = CONTACT.phone;
+const CONTACT_PHONE_HREF = CONTACT.phoneHref;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -105,9 +110,9 @@ export default function ContactoPage() {
             Estamos aqui para ajudar
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-storm">
-            Fala directamente com o Virgílio Morouço — para dúvidas sobre
-            pacotes, visitas ao espaço ou qualquer detalhe sobre a tua festa ou
-            evento.
+            Para marcar uma festa, saber datas livres e horários, ou pedir
+            condições para outro evento — fale connosco. A forma mais rápida é
+            o WhatsApp.
           </p>
         </header>
 
@@ -152,39 +157,39 @@ export default function ContactoPage() {
                   Localização
                 </dt>
                 <dd className="mt-2 text-base text-storm">
-                  N356-1 n.º 11, 2405-003 Maceira
+                  {FULL_ADDRESS}
+                  <span className="mt-1 block text-sm text-storm/80">
+                    A 3 km da rotunda da Azoia (IC2), em direção a Maceira
+                  </span>
                 </dd>
               </div>
 
               <div>
                 <dt className="text-xs font-bold uppercase tracking-widest text-terracotta">
-                  Horário de resposta
+                  Dias e horários
                 </dt>
                 <dd className="mt-2 text-base text-storm">
-                  Segunda a Sábado, 9h–19h
+                  Contacte-nos para saber a disponibilidade
                 </dd>
-                <p className="mt-1 text-xs text-storm/70">
-                  Respondemos em menos de 24 horas
-                </p>
               </div>
             </dl>
           </div>
 
           <div className="flex flex-col justify-center rounded-lg bg-forest p-8">
             <h2 className="font-display text-2xl text-cream">
-              {RESERVATIONS_LIVE ? 'Pronto para reservar?' : 'Reservas brevemente'}
+              Marcar uma festa
             </h2>
-            <p className="mt-4 leading-relaxed text-cream/70">
-              {RESERVATIONS_LIVE
-                ? 'Se já sabes a data e o tipo de evento, o formulário de reservas é o caminho mais rápido — recebes orçamento sem compromisso.'
-                : 'Estamos a preparar o formulário online. Entretanto, usa os contactos ao lado — respondemos em menos de 24 horas.'}
+            <p className="mt-4 leading-relaxed text-cream/75">
+              Envie-nos a data pretendida e o número de crianças. A mensagem
+              já vai preparada — só tem de completar.
             </p>
+            <ContactButtons tone="dark" className="mt-8 sm:flex-col" />
             {RESERVATIONS_LIVE ? (
               <Link
                 href="/reservas/"
-                className="mt-8 inline-flex min-h-[44px] w-fit items-center justify-center rounded-md bg-terracotta px-8 text-base font-bold text-white transition-colors hover:bg-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                className="mt-6 inline-flex min-h-[44px] items-center text-sm font-bold text-terracotta-light hover:text-cream"
               >
-                Formulário de Reserva →
+                Ou preencha o formulário de reserva →
               </Link>
             ) : null}
           </div>
@@ -202,7 +207,7 @@ export default function ContactoPage() {
               />
             </div>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=39.703778,-8.866861"
+              href={MAPS_DIRECTIONS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-body text-sm font-bold uppercase tracking-widest text-terracotta transition-colors hover:text-terracotta-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
