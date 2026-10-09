@@ -218,14 +218,34 @@ export default function HomePage() {
       {/* ——— O ESPAÇO ——— */}
       <section className="bg-offwhite py-section lg:py-section-lg">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 md:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
-          <div className="order-2 flex justify-center lg:order-1">
-            <Image
-              src="/images/pezinho1.png"
-              alt=""
-              width={1000}
-              height={1000}
-              className="h-auto w-2/3 max-w-sm object-contain"
-            />
+          <div className="order-2 grid grid-cols-2 gap-3 sm:gap-4 lg:order-1">
+            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-lg bg-storm/10">
+              <Image
+                src="/images/galeria/espaco-geral.jpg"
+                alt="Zona interior de diversão do Pé d'Lama com estruturas de escalada e casinha"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-storm/10">
+              <Image
+                src="/images/galeria/piscina-bolas.jpg"
+                alt="Piscina de bolas colorida"
+                fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-storm/10">
+              <Image
+                src="/images/galeria/karts.jpg"
+                alt="Karts a pedais e triciclos"
+                fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="order-1 lg:order-2">
             <p className="text-xs font-bold uppercase tracking-widest text-terracotta">

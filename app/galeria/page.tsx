@@ -79,7 +79,15 @@ const categories: GalleryCategory[] = [
     title: 'O Espaço Hoje',
     description:
       'A zona de diversão, as salas de lanche e o espaço exterior em contacto com a natureza.',
-    photos: [],
+    photos: [
+      { src: '/images/galeria/espaco-geral.jpg', alt: "Zona interior de diversão do Pé d'Lama com estruturas de escalada e casinha" },
+      { src: '/images/galeria/sala-principal.jpg', alt: "Sala principal do Pé d'Lama com escorregas, casinha e a lama na janela" },
+      { src: '/images/galeria/piscina-bolas.jpg', alt: "Piscina de bolas colorida com paredes almofadadas" },
+      { src: '/images/galeria/karts.jpg', alt: 'Karts a pedais e triciclos na pista interior' },
+      { src: '/images/galeria/basquete.jpg', alt: 'Campo de basquetebol interior com rede de escalada' },
+      { src: '/images/galeria/escada-baloico.jpg', alt: 'Escada de cordas e baloiço com colchões de proteção' },
+      { src: '/images/galeria/sala-alvos.jpg', alt: 'Sala de jogos de água com alvos coloridos' },
+    ],
   },
   {
     id: 'festas',
