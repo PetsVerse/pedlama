@@ -87,6 +87,22 @@ const categories: GalleryCategory[] = [
       { src: '/images/galeria/basquete.jpg', alt: 'Campo de basquetebol interior com rede de escalada' },
       { src: '/images/galeria/escada-baloico.jpg', alt: 'Escada de cordas e baloiço com colchões de proteção' },
       { src: '/images/galeria/sala-alvos.jpg', alt: 'Sala de jogos de água com alvos coloridos' },
+      { src: '/images/galeria/slide-crianca.jpg', alt: 'Menina a divertir-se no slide de corda da sala interior' },
+    ],
+  },
+  {
+    id: 'exterior',
+    title: 'Esplanada e Jardim',
+    description:
+      'A esplanada coberta para os pais e o jardim com palmeiras, oliveiras e muito espaço para correr.',
+    photos: [
+      { src: '/images/galeria/esplanada-coberta.jpg', alt: "Esplanada coberta do Pé d'Lama com mesas de madeira e vista para o jardim" },
+      { src: '/images/galeria/esplanada-guarda-sois.jpg', alt: 'Esplanada exterior com guarda-sóis, rodeada de palmeiras e pinheiros' },
+      { src: '/images/galeria/jardim-palmeiras.jpg', alt: "Jardim do Pé d'Lama com palmeiras, relvado e caminhos" },
+      { src: '/images/galeria/jardim-palco.jpg', alt: 'Vista do jardim com relvado, árvores e o palco exterior ao fundo' },
+      { src: '/images/galeria/entrada-jardim.jpg', alt: "Entrada do Pé d'Lama com loendros floridos e estátuas" },
+      { src: '/images/galeria/esplanada-noite.jpg', alt: 'Esplanada coberta iluminada por grinaldas de luzes ao fim do dia' },
+      { src: '/images/galeria/caminho-noite.jpg', alt: 'Caminho junto à esplanada iluminado à noite, com hera e palmeiras' },
     ],
   },
   {
